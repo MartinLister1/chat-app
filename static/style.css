@@ -1,5 +1,5 @@
 body {
-  background-color: #1a1a2e;
+  background-color: #0a0a0a;
   font-family: Arial, sans-serif;
   color: white;
   text-align: center;
@@ -8,13 +8,13 @@ body {
 }
 
 header h1 {
-  color: #f7c948;
+  color: #00d4d4;
   font-size: 32px;
   margin-bottom: 5px;
 }
 
 header p {
-  color: #aaaaaa;
+  color: #888888;
   margin-top: 0;
 }
 
@@ -29,7 +29,7 @@ header p {
 }
 
 #username-screen h2 {
-  color: #f7c948;
+  color: #00d4d4;
   margin-bottom: 20px;
 }
 
@@ -37,8 +37,8 @@ header p {
   padding: 12px 20px;
   font-size: 16px;
   border-radius: 8px;
-  border: 2px solid #333366;
-  background-color: #16213e;
+  border: 2px solid #222222;
+  background-color: #111111;
   color: white;
   width: 250px;
   margin-right: 10px;
@@ -46,14 +46,14 @@ header p {
 
 #username-screen input:focus {
   outline: none;
-  border-color: #f7c948;
+  border-color: #00d4d4;
 }
 
 #username-screen button {
   padding: 12px 25px;
   font-size: 16px;
   font-weight: bold;
-  background-color: #f7c948;
+  background-color: #00d4d4;
   color: black;
   border: none;
   border-radius: 8px;
@@ -61,7 +61,7 @@ header p {
 }
 
 #username-screen button:hover {
-  background-color: #e0b030;
+  background-color: #00b8b8;
 }
 
 /* chat screen */
@@ -73,19 +73,19 @@ header p {
 
 aside {
   text-align: right;
-  color: #aaaaaa;
+  color: #888888;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
 aside strong {
-  color: #6bffb8;
+  color: #00d4d4;
 }
 
 /* messages box */
 #messages {
-  background-color: #16213e;
-  border: 2px solid #333366;
+  background-color: #111111;
+  border: 2px solid #222222;
   border-radius: 10px;
   padding: 15px;
   height: 400px;
@@ -101,7 +101,7 @@ aside strong {
 
 .message .name {
   font-weight: bold;
-  color: #f7c948;
+  color: #00d4d4;
   margin-right: 8px;
 }
 
@@ -109,15 +109,16 @@ aside strong {
   color: #dddddd;
 }
 
-/* system messages like joined and left */
+/* system messages */
 .system-message {
-  color: #6bffb8;
+  color: #00d4d4;
   font-size: 13px;
   margin-bottom: 8px;
   font-style: italic;
+  opacity: 0.7;
 }
 
-/* message form at the bottom */
+/* message form */
 #message-form {
   display: flex;
   gap: 10px;
@@ -128,21 +129,21 @@ aside strong {
   padding: 12px 15px;
   font-size: 15px;
   border-radius: 8px;
-  border: 2px solid #333366;
-  background-color: #16213e;
+  border: 2px solid #222222;
+  background-color: #111111;
   color: white;
 }
 
 #message-input:focus {
   outline: none;
-  border-color: #f7c948;
+  border-color: #00d4d4;
 }
 
 #message-form button {
   padding: 12px 25px;
   font-size: 15px;
   font-weight: bold;
-  background-color: #f7c948;
+  background-color: #00d4d4;
   color: black;
   border: none;
   border-radius: 8px;
@@ -150,7 +151,7 @@ aside strong {
 }
 
 #message-form button:hover {
-  background-color: #e0b030;
+  background-color: #00b8b8;
 }
 
 footer {
@@ -158,6 +159,6 @@ footer {
 }
 
 footer p {
-  color: #aaaaaa;
+  color: #888888;
   font-size: 12px;
 }
