@@ -1,0 +1,163 @@
+body {
+  background-color: #1a1a2e;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+header h1 {
+  color: #f7c948;
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+header p {
+  color: #aaaaaa;
+  margin-top: 0;
+}
+
+/* hide something */
+.hidden {
+  display: none;
+}
+
+/* username screen */
+#username-screen {
+  margin-top: 60px;
+}
+
+#username-screen h2 {
+  color: #f7c948;
+  margin-bottom: 20px;
+}
+
+#username-screen input {
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #333366;
+  background-color: #16213e;
+  color: white;
+  width: 250px;
+  margin-right: 10px;
+}
+
+#username-screen input:focus {
+  outline: none;
+  border-color: #f7c948;
+}
+
+#username-screen button {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f7c948;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#username-screen button:hover {
+  background-color: #e0b030;
+}
+
+/* chat screen */
+#chat-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+aside {
+  text-align: right;
+  color: #aaaaaa;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+aside strong {
+  color: #6bffb8;
+}
+
+/* messages box */
+#messages {
+  background-color: #16213e;
+  border: 2px solid #333366;
+  border-radius: 10px;
+  padding: 15px;
+  height: 400px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+/* each message */
+.message {
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.message .name {
+  font-weight: bold;
+  color: #f7c948;
+  margin-right: 8px;
+}
+
+.message .text {
+  color: #dddddd;
+}
+
+/* system messages like joined and left */
+.system-message {
+  color: #6bffb8;
+  font-size: 13px;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* message form at the bottom */
+#message-form {
+  display: flex;
+  gap: 10px;
+}
+
+#message-input {
+  flex: 1;
+  padding: 12px 15px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 2px solid #333366;
+  background-color: #16213e;
+  color: white;
+}
+
+#message-input:focus {
+  outline: none;
+  border-color: #f7c948;
+}
+
+#message-form button {
+  padding: 12px 25px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #f7c948;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#message-form button:hover {
+  background-color: #e0b030;
+}
+
+footer {
+  margin-top: 30px;
+}
+
+footer p {
+  color: #aaaaaa;
+  font-size: 12px;
+}

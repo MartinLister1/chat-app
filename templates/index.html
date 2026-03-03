@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat App</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <header>
+    <h1>💬 Chat App</h1>
+    <p>Made by Martin Lister</p>
+  </header>
+
+  <main>
+
+    <!-- username screen - shown first before you enter the chat -->
+    <section id="username-screen">
+      <h2>Enter your name to join</h2>
+      <input type="text" id="username-input" placeholder="Your name..." maxlength="20"/>
+      <button onclick="joinChat()">Join Chat</button>
+    </section>
+
+    <!-- chat screen - hidden until user enters a name -->
+    <section id="chat-screen" class="hidden">
+
+      <aside>
+        <p>Online: <strong id="user-count">1</strong> user(s)</p>
+      </aside>
+
+      <!-- this is where all the messages show up -->
+      <section id="messages"></section>
+
+      <form id="message-form">
+        <input type="text" id="message-input" placeholder="Type a message..." maxlength="200"/>
+        <button type="submit">Send</button>
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Built with HTML, CSS, JavaScript and Python</p>
+  </footer>
+
+  <!-- socketio lets us do real time messaging -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+  <script src="/static/script.js"></script>
+
+</body>
+</html>
