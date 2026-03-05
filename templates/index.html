@@ -15,21 +15,21 @@
 
   <main>
 
-    <!-- username screen - shown first before you enter the chat -->
+    <!-- username screen - shown first -->
     <section id="username-screen">
       <h2>Enter your name to join</h2>
       <input type="text" id="username-input" placeholder="Your name..." maxlength="20"/>
       <button onclick="joinChat()">Join Chat</button>
     </section>
 
-    <!-- chat screen - hidden until user enters a name -->
+    <!-- chat screen - hidden until the user enters a name -->
     <section id="chat-screen" class="hidden">
 
       <aside>
         <p>Online: <strong id="user-count">1</strong> user(s)</p>
       </aside>
 
-      <!-- this is where all the messages show up -->
+      <!-- messages appear here -->
       <section id="messages"></section>
 
       <form id="message-form">
@@ -45,7 +45,7 @@
     <p>Built with HTML, CSS, JavaScript and Python</p>
   </footer>
 
-  <!-- socketio lets us do real time messaging -->
+  <!-- socketio handles the real time connection -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
   <script src="/static/script.js"></script>
 

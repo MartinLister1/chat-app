@@ -3,12 +3,11 @@ var socket = io();
 
 var username = '';
 
-// this runs when the user clicks join
+// runs when the user clicks join
 function joinChat() {
   var input = document.getElementById('username-input');
   var name = input.value.trim();
 
-  // make sure they entered a name
   if (name == '') {
     alert('Please enter your name!');
     return;
@@ -16,61 +15,56 @@ function joinChat() {
 
   username = name;
 
-  // hide the username screen and show the chat
+  // hide the name screen and show the chat
   document.getElementById('username-screen').classList.add('hidden');
   document.getElementById('chat-screen').classList.remove('hidden');
 
-  // add a message to say we joined
   addSystemMessage('You joined the chat as ' + username);
 
-  // focus on the message input so they can start typing straight away
+  // focus the input so they can start typing straight away
   document.getElementById('message-input').focus();
 }
 
-// this runs when the message form is submitted
+// runs when the message form is submitted
 document.getElementById('message-form').addEventListener('submit', function(e) {
-  // stop the page from refreshing when form is submitted
   e.preventDefault();
 
   var input = document.getElementById('message-input');
   var message = input.value.trim();
 
-  // dont send empty messages
   if (message == '') return;
 
-  // send the message to the server
   socket.emit('send_message', {
     username: username,
     message: message
   });
 
-  // clear the input box
   input.value = '';
 });
 
-// this runs when we get a new message from the server
+// runs when a new message comes in from the server
 socket.on('new_message', function(data) {
-  addMessage(data.username, data.message);
+  addMessage(data.username, data.message, data.time);
 });
 
-// this runs when someone joins the chat
+// runs when someone joins
 socket.on('user_joined', function(data) {
   document.getElementById('user-count').textContent = data.users;
-  // only show the joined message if we already have a username
-  // otherwise it shows before we have even entered our name
+  // only show this if we already have a username set
+  // otherwise it fires before we even get to the chat
   if (username != '') {
     addSystemMessage('Someone joined the chat');
   }
 });
 
-// this runs when someone leaves the chat
+// runs when someone leaves
 socket.on('user_left', function(data) {
   document.getElementById('user-count').textContent = data.users;
   addSystemMessage('Someone left the chat');
 });
 
-// adds a normal chat message to the messages box
-function addMessage(name, text) {
+// adds a chat message to the messages box
+function addMessage(name, text, time) {
   var messages = document.getElementById('messages');
 
   var messageEl = document.createElement('article');
@@ -84,11 +78,17 @@ function addMessage(name, text) {
   textEl.className = 'text';
   textEl.textContent = text;
 
+  // show the time the message was sent
+  var timeEl = document.createElement('span');
+  timeEl.className = 'time';
+  timeEl.textContent = time || '';
+
   messageEl.appendChild(nameEl);
   messageEl.appendChild(textEl);
+  messageEl.appendChild(timeEl);
   messages.appendChild(messageEl);
 
-  // scroll to the bottom so you always see the latest message
+  // scroll to the bottom so the latest message is always visible
   messages.scrollTop = messages.scrollHeight;
 }
 
@@ -96,15 +96,15 @@ function addMessage(name, text) {
 function addSystemMessage(text) {
   var messages = document.getElementById('messages');
 
-  var messageEl = document.createElement('p');
-  messageEl.className = 'system-message';
-  messageEl.textContent = text;
+  var el = document.createElement('p');
+  el.className = 'system-message';
+  el.textContent = text;
 
-  messages.appendChild(messageEl);
+  messages.appendChild(el);
   messages.scrollTop = messages.scrollHeight;
 }
 
-// allow pressing enter to join the chat
+// press enter to join
 document.getElementById('username-input').addEventListener('keypress', function(e) {
   if (e.key == 'Enter') {
     joinChat();
