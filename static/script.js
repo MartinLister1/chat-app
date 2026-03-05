@@ -38,7 +38,7 @@ document.getElementById('message-form').addEventListener('submit', function(e) {
     username: username,
     message: message
   });
-
+socket.emit('typing', { username: username });
   input.value = '';
 });
 
@@ -56,7 +56,18 @@ socket.on('user_joined', function(data) {
     addSystemMessage('Someone joined the chat');
   }
 });
-
+var typingTimer = null;
+socket.on('user_typing', function(data) {
+    document.getElementById('typing-indicator').textContent = data.username + ' is typing...';
+    
+    // clear the old timer if there is one
+    clearTimeout(typingTimer);
+    
+    // hide the message after 2 seconds if no new typing event comes in
+    typingTimer = setTimeout(function() {
+        document.getElementById('typing-indicator').textContent = '';
+    }, 2000);
+});
 // runs when someone leaves
 socket.on('user_left', function(data) {
   document.getElementById('user-count').textContent = data.users;

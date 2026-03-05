@@ -28,7 +28,10 @@ def handle_connect():
     emit('user_joined', {'users': connected_users}, broadcast=True)
     print('user connected, total: ' + str(connected_users))
 
-
+@socketio.on('typing')
+def handle_typing(data):
+    emit('user_typing', {'username': data['username']}, broadcast=True)
+    
 # runs when someone closes the page
 @socketio.on('disconnect')
 def handle_disconnect():
