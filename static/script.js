@@ -2,6 +2,7 @@
 var socket = io();
 
 var username = '';
+var typingTimer = null;
 
 // runs when the user clicks join
 function joinChat() {
@@ -38,8 +39,15 @@ document.getElementById('message-form').addEventListener('submit', function(e) {
     username: username,
     message: message
   });
-socket.emit('typing', { username: username });
+
   input.value = '';
+});
+
+// show typing indicator while the user is typing
+document.getElementById('message-input').addEventListener('input', function() {
+  if (username != '') {
+    socket.emit('typing', { username: username });
+  }
 });
 
 // runs when a new message comes in from the server
@@ -56,22 +64,24 @@ socket.on('user_joined', function(data) {
     addSystemMessage('Someone joined the chat');
   }
 });
-var typingTimer = null;
-socket.on('user_typing', function(data) {
-    document.getElementById('typing-indicator').textContent = data.username + ' is typing...';
-    
-    // clear the old timer if there is one
-    clearTimeout(typingTimer);
-    
-    // hide the message after 2 seconds if no new typing event comes in
-    typingTimer = setTimeout(function() {
-        document.getElementById('typing-indicator').textContent = '';
-    }, 2000);
-});
+
 // runs when someone leaves
 socket.on('user_left', function(data) {
   document.getElementById('user-count').textContent = data.users;
   addSystemMessage('Someone left the chat');
+});
+
+// runs when someone else is typing
+socket.on('user_typing', function(data) {
+  document.getElementById('typing-indicator').textContent = data.username + ' is typing...';
+
+  // clear the old timer if there is one
+  clearTimeout(typingTimer);
+
+  // hide the message after 2 seconds if no new typing event comes in
+  typingTimer = setTimeout(function() {
+    document.getElementById('typing-indicator').textContent = '';
+  }, 2000);
 });
 
 // adds a chat message to the messages box
